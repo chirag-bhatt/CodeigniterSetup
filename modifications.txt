@@ -11,19 +11,19 @@ To make development faster there are some repeatative things to do in all our pr
 3) Autoload some libraries and helper it depends on our project.
     -- for example we need url helper and session library in every project
 
-4) set the base_uri of our project in config.php file.
+4) set the base_uri of our project in config.php file. (*)
 
 
 5) set $config['composer_autoload'] = TRUE if we are planing to use composer in our codeigniter project
     -- to use composer install composer and create one file in application folder called composer.json.
     -- to manage dependency we need to say what are the dependency we need in project it must be mention in composer.json file.
-    -- to install dependency use composer install command from command line (use this command in application directory).
+    -- to install dependency use composer install command from command line (use this command in application directory).(*)
 
 6) set $config['log_threshold'] = 1; so that it will log all the error in log file.
 
 7) database settings.
     -- copy the default setting array and create another array for prod. when we are in local we will make active default array when we are in live server we just need to active prod array by $active_group = 'default'; or $active_group = 'prod';
-    -- initialize proper hostname, username, password and database name.
+    -- initialize proper hostname, username, password and database name.(*)
 
 8) set the default controller of our website $route['default_controller'] = 'home'; in routs.php file.
     -- generally our default controller name is home.
@@ -32,7 +32,7 @@ To make development faster there are some repeatative things to do in all our pr
     -- xxx is the first three character of our project.
     -- change the application folder name and system_path in index.php file
           --- $system_path = 'xxx_sys';
-          --- $application_folder = 'xxx_app';
+          --- $application_folder = 'xxx_app';(*)
 
 10)  Copy My_loader and paste it to the core directory.
     -- It will modify the parent class CI_Loader and add new functionality($this->load->template()) to load whole page content(header,nav,mainpage,footer).
