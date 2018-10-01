@@ -17,21 +17,21 @@ class My_Loader extends CI_Loader {
         $vars['current_page'] = $router->fetch_class();
         $vars['current_action'] = $router->fetch_method();
         if($return):
-            $content  = $this->view('header', $vars, $return);
+            $content  = $this->view('shared/header', $vars, $return);
             $content .= $this->view($template_name, $vars, $return);
-            $content .= $this->view('footer', $vars, $return);
+            $content .= $this->view('shared/footer', $vars, $return);
             return $content;
         else:
-            $this->view('header', $vars);
+            $this->view('shared/header', $vars);
             $this->view($template_name, $vars);
-            $this->view('footer', $vars);
+            $this->view('shared/footer', $vars);
         endif;
     }
 
     public function template_admin($template_name, $vars = array(), $return = FALSE)
     {
         define("BASE_URL", base_url());
-        define("RES_URL", base_url() . "dhl_asset/");
+        define("RES_URL", base_url() . "assets/");
         $router =& load_class('Router', 'core');
         $CI =& get_instance();
 
