@@ -1,0 +1,46 @@
+To make development faster there are some repeatative things to do in all our projects.
+    ****** these are the most important changes to do in codeigniter framework ******
+
+1) remove index.php file.
+
+    -- copy the .htaccess file and paste it to the root folder of out project.
+    -- remove index.php from $config['index_page'] = 'index.php'; to $config['index_page'] = ''; in cofing.php file.
+
+2) define RESPATH to define('RESPATH',dirname(__FILE__) . DIRECTORY_SEPARATOR . 'xxx_ass' . DIRECTORY_SEPARATOR); in index.php
+
+3) Autoload some libraries and helper it depends on our project.
+    -- for example we need url helper and session library in every project
+
+4) set the base_uri of our project in config.php file.
+
+
+5) set $config['composer_autoload'] = TRUE if we are planing to use composer in our codeigniter project
+    -- to use composer install composer and create one file in application folder called composer.json.
+    -- to manage dependency we need to say what are the dependency we need in project it must be mention in composer.json file.
+    -- to install dependency use composer install command from command line (use this command in application directory).
+
+6) set $config['log_threshold'] = 1; so that it will log all the error in log file.
+
+7) database settings.
+    -- copy the default setting array and create another array for prod. when we are in local we will make active default array when we are in live server we just need to active prod array by $active_group = 'default'; or $active_group = 'prod';
+    -- initialize proper hostname, username, password and database name.
+
+8) set the default controller of our website $route['default_controller'] = 'home'; in routs.php file.
+    -- generally our default controller name is home.
+
+9) rename the application folder to xxx_app and system folder to xxx_sys.
+    -- xxx is the first three character of our project.
+    -- change the application folder name and system_path in index.php file
+          --- $system_path = 'xxx_sys';
+          --- $application_folder = 'xxx_app';
+
+10)  Copy My_loader and paste it to the core directory.
+    -- It will modify the parent class CI_Loader and add new functionality($this->load->template()) to load whole page content(header,nav,mainpage,footer).
+    -- custom loader to load header footer and main content of our views.
+    -- header.php file :- loads header portion and css file that we need in all the pages.
+    -- nav.php file :- loads nav menu of our website.
+    -- mainviewfile :- it will contain the unique portion of our page.
+    -- scripts.php :- this file will be loaded to load all the script file in our view.
+    -- footer.php :- it contains footer content of our webpage.
+        --- scripts.php file will be loaded from here like $this->load->view('scrits.php');
+
